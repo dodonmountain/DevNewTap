@@ -1,0 +1,7 @@
+body {
+    background: url("./ddd.jpg");
+    background-size: cover;
+    color: white;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: 200;
+}
