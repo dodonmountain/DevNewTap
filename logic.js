@@ -4,9 +4,10 @@ const clock = new Vue({
 		contentStyle: {
 			backgroundColor: "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16)})
 		},
-        time: moment().format('LTS'),
+		hours: 0,
+		seconds: 0,
         date: moment().locale('ko').format('L') + moment().locale('ko').format('dddd')[0],
-        countdown: 10,
+		countdown: 10,	
 	},
 	methods: {
 		clicked: function() {
@@ -15,7 +16,8 @@ const clock = new Vue({
 	},
 	mounted: function() {
 		setInterval(()=>{
-            this.time = moment().format('LTS')
+			this.hours = [moment().format('LTS').split(':')][0]
+			this.seconds = [moment().format('LTS').split(':')][0][2].split(' ')
 		},500)
 	}
 })
@@ -91,3 +93,20 @@ const commitView = new Vue({
     }
   }
 })
+
+const editor = new Vue({
+	el: '#editor',
+	data: {
+	  input: '# hello'
+	},
+	computed: {
+	  compiledMarkdown: function () {
+		return marked(this.input, { sanitize: true })
+	  }
+	},
+	methods: {
+	  update: _.debounce(function (e) {
+		this.input = e.target.value
+	  }, 300)
+	}
+  })

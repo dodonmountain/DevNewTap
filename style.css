@@ -1,7 +1,12 @@
 body {
-    background: url("./ddd.jpg");
-    background-size: cover;
     color: white;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Nanum Gothic Coding', sans-serif;
     font-weight: 200;
+    background: transparent;
+    height: 100vh;
+
+}
+html {
+    background: url("./winter.jpg");
+    box-shadow: inset 0px 0px 400px 200px rgba(0,0,0,0.75);
 }

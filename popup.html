@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>킹절학기 프로젝트</title>
+	<title>새 탭</title>
 	<link href="./font-awesome/css/all.min.css" rel="stylesheet">
 	<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
@@ -12,17 +12,25 @@
 	<script src="moment-with-locales.js"></script>
 	<script src="popper.min.js"></script>
 	<script src="./bootstrap/js/bootstrap.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
+	<script src="https://unpkg.com/marked@0.3.6"></script>
+	<script src="https://unpkg.com/lodash@4.16.0"></script>
+
+
 	<style>
 		.timer {
 			font-size: 5rem;
 			font-family: 'Nanum Gothic Coding', monospace;
 		}
 		.date {
-			font-size: 3rem;
+			font-size: 1.2rem;
+			margin: 0;
 		}
 		.time {
-			font-size: 9rem;
+			font-size: 7rem;
+			font-family: 'Didact Gothic';
 		}
 		.brand {
 			align-content: center;
@@ -41,7 +49,6 @@
 			top: 0;
 			z-index: 1;
 			left: 0;
-			width: 30rem;
 		}
 		.row > a {
 			width: 6rem;
@@ -53,97 +60,164 @@
 			opacity: 0.8;
 		}
 		input[type=text] {
-			border: 2px solid white;
+			border: 1px solid white;
 			margin-right: 1rem;
 			padding-left: 5px;
-			border-radius: 5px 5px;
+			border-radius: 5px 5px;	
+			background: rgba(0,0,0,0.1);
+		}
+		input[type=text]:focus {
+			background: transparent;
+		}
+		.search {
+			background: transparent;
+			color: white;
+		}
+		::placeholder {
+			color: white !important;
+		}
+		.carousel-indicators {
+			position: fixed;
+			bottom: 0;
+		}
+		.carousel-indicators > li {
+			height: 20px;
+			width: 20px;
+			border-radius: 50%;
+			margin: 0 15px;
+		}
+		#app {
+			margin-top: 20vh;
+		}
+		textarea, #editor div {
+			display: inline-block;
+			width: 49%;
+			height: 100%;
+			vertical-align: top;
+			box-sizing: border-box;
+			padding: 0 20px;
+		}
+
+		textarea {
+			border: none;
+			border-right: 1px solid #ccc;
+			resize: none;
+			outline: none;
+			background-color: #f6f6f6;
+			font-size: 14px;
+			font-family: 'Monaco', courier, monospace;
+			padding: 20px;
+		}
+
+		code {
+			color: #f66;
 		}
 	</style>
 </head>
 
 <body>
+		<div class="bg"></div>
 		<div id="app">
 			<!-- TIMER -->
 				<div id="content">
-					<div class="timer text-center">
-					  <p class="date">{{ date }}</p>
-					  <p class="time">{{ time }}</p>	
+					<div class="timer container">
+						<div class="row justify-content-center">
+							<p class="date">{{ date }}</p>
+						</div>
+						<div class="row justify-content-center">
+							<h1 class="time">{{ hours[0] }} {{ hours[1] }} </h1>
+							<div class="ml-3">
+								<h3 class="pt-3">{{ seconds[1] }}</h3>
+								<h3 class="pb-3">{{ seconds[0] }}</h3>
+							</div>
+						</div>
 					</div>
 				</div>
 
-				<div class="container-fluid text-dark px-5">
 
-					<div class="row justify-content-center py-2"> <!-- ROW 1 -->
-							<i class="fab fa-google fa-2x p-2 text-right" style="color:royalblue"></i>
-							<form action="https://www.google.com/search" class="form-control border-0 col-5 h-100 bg-transparent" method="get" name="searchform" target="_blank">
+				<!-- carousel container -->
+				<div id="mainCarousel" class="carousel slide" data-ride="carousel" data-interval="false">	
+					<ol class="carousel-indicators">
+							<li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#mainCarousel" data-slide-to="1"></li>
+							<li data-target="#mainCarousel" data-slide-to="2"></li>
+						</ol>
+					<div class="carousel-inner py-5 text-center">
+						<div class="carousel-item active">
+							<form action="https://www.google.com/search" class="form-control border-0 offset-4 col-4 h-100 bg-transparent" method="get" name="searchform" target="_blank">
 								<input name="sitesearch" type="hidden">
-								<input autocomplete="on" class="input-group form-control search" name="q" placeholder="Google 검색" required="required"  type="text">
+								<input autocomplete="on" class="input-group form-control search fa" name="q" placeholder="&#xf002; 구글에서 검색" required="required"  type="text">
 							</form>
-							<i class="fab fa-stack-overflow fa-2x p-2 text-right" style="color:orange"></i>
-							<form action="https://stackoverflow.com/search" class="form-control border-0 col-5 h-100 bg-transparent" method="get" name="soverflow" target="_blank">
-								<input autocomplete="on" class="input-group form-control search" name="q" placeholder="stackoverflow 검색" required="required"  type="text">
+
+							<form action="https://stackoverflow.com/search" class="form-control border-0 offset-4 col-4 h-100 bg-transparent" method="get" name="soverflow" target="_blank">
+								<input autocomplete="on" class="input-group form-control search fa" name="q" placeholder="&#xf002; 스택오버플로우에서 검색" required="required"  type="text">
 							</form>
+
+							<form action="https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&" class="form-control border-0 offset-4 col-4 h-100 bg-transparent" method="get" name="soverflow" target="_blank">
+								<input autocomplete="on" class="input-group form-control search fa" name="query" placeholder="&#xf002; 네이버에서 검색" required="required"  type="text">
+							</form>
+						</div>
+						<div class="carousel-item">
+
+						</div>
+						<div class="carousel-item">
+							<h1 class="display-1">SLIDE 3</h1>
+						</div>
 					</div>
+				</div>
+
+				<div class="container text-dark px-5">
+
+
 					<!-- LINKS ROW -->
 					<div class="row justify-content-around bg-transparent py-3 px-5 text-center"> 
-						<a style="color:aliceblue;" class="fab fa-codepen fa-4x text-decoration-none mx-1" href="https://codepen.io/"><p class="brandname text-white mt-2">Codepen</p></a>
-						<a style="color: whitesmoke;" class="fab fa-github fa-4x text-decoration-none mx-1" href="https://github.com/"><p class="brandname text-white mt-2">Github</p></a>
-						<a style="color:orangered;" class="fab fa-gitlab fa-4x text-decoration-none mx-1" href="https://about.gitlab.com/"><p class="brandname text-white mt-2">Gitlab</p></a>
-						<a style="color:orangered;" class="fab fa-reddit fa-4x text-decoration-none mx-1" href="https://www.reddit.com/"><p class="brandname text-white mt-2">Reddit</p></a>
-						<a style="color:orange;" class="fab fa-aws fa-4x text-decoration-none mx-1" href="https://aws.amazon.com/"><p class="brandname text-white mt-2">AWS</p></a>
-						<a style="color:purple;" class="fab fa-slack fa-4x text-decoration-none mx-1" href="https://slack.com/intl"><p class="brandname text-white mt-2">Slack</p></a>
-						<a style="color:white;" class="fab fa-docker fa-4x text-decoration-none mx-1" href="https://www.docker.com/"><p class="brandname text-white mt-2">Docker</p></a>
-						<a style="color:skyblue;" class="fab fa-react fa-4x text-decoration-none mx-1" href="https://reactjs.org/docs/getting-started.html"><p class="brandname text-white mt-2">React</p></a>
-						<a style="color:royalblue;" class="fab fa-trello fa-4x text-decoration-none mx-1" href="https://trello.com/"><p class="brandname text-white mt-2">Trello</p></a>
-						<a style="color:aliceblue;" class="fab fa-wordpress-simple fa-4x text-decoration-none mx-1" href="https://wordpress.com/"><p class="brandname text-white mt-2">Wordpress</p></a>
-						<a style="color:green;" class="fas fa-table fa-4x text-decoration-none mx-1" href="https://www.google.com/docs/about/"><p class="brandname text-white mt-2">Google docs</p></a>
-						<a style="color:yellow;" class="fab fa-google-drive fa-4x text-decoration-none mx-1" href="https://www.google.com/drive/"><p class="brandname text-white mt-2">Google Drive</p></a>
+						<a style="color:salmon;" class="fab fa-codepen fa-4x text-decoration-none mx-1" href="https://codepen.io/"><p class="brandname text-white mt-2">코드펜</p></a>
+						<a style="color: #2f2f2f;" class="fab fa-github fa-4x text-decoration-none mx-1" href="https://github.com/"><p class="brandname text-white mt-2">깃헙</p></a>
+						<a style="color:orangered;" class="fab fa-reddit fa-4x text-decoration-none mx-1" href="https://www.reddit.com/"><p class="brandname text-white mt-2">레딧</p></a>
+						<a style="color:purple;" class="fab fa-slack fa-4x text-decoration-none mx-1" href="https://slack.com/intl"><p class="brandname text-white mt-2">슬랙</p></a>
+						<a style="color:royalblue;" class="fab fa-trello fa-4x text-decoration-none mx-1" href="https://trello.com/"><p class="brandname text-white mt-2">트렐로</p></a>
+						<a style="color:darkgreen;" class="fas fa-table fa-4x text-decoration-none mx-1" href="https://www.google.com/docs/about/"><p class="brandname text-white mt-2">구글 독스</p></a>
+						<a style="color:yellow;" class="fab fa-google-drive fa-4x text-decoration-none mx-1" href="https://www.google.com/drive/"><p class="brandname text-white mt-2">구글드라이브</p></a>
+						<a style="color:royalblue;" class="fab fa-dropbox fa-4x text-decoration-none mx-1" href="https://www.dropbox.com/"><p class="brandname text-white mt-2">드롭박스</p></a>
+						<a style="color:lightseagreen;" class="fa fa-paint-brush fa-4x text-decoration-none mx-1" href="https://www.draw.io/"><p class="brandname text-white mt-2">Draw.io</p></a>
 					</div>
-
-					<div class="row justify-content-around bg-transparent py-2 px-5 text-center">
-						<a style="color:chocolate;" class="fas fa-chart-bar fa-4x text-decoration-none mx-1" href="https://codeforces.com/"><p class="brandname text-white mt-2">Codefoces</p></a>
-						<a style="color: azure;" class="fab fa-microsoft fa-4x text-decoration-none mx-1" href="https://azure.microsoft.com/"><p class="brandname text-white mt-2">Azure</p></a>
-						<a style="color:#12976b;" class="fab fa-vuejs fa-4x text-decoration-none mx-1" href="https://vuejs.org/v2/guide/"><p class="brandname text-white mt-2">Vue.js</p></a>
-						<a style="color:lightpink;" class="fa fa-paint-brush fa-4x text-decoration-none mx-1" href="https://www.draw.io/"><p class="brandname text-white mt-2">Draw.io</p></a>
-						<a style="color:royalblue;" class="fab fa-dropbox fa-4x text-decoration-none mx-1" href="https://www.dropbox.com/"><p class="brandname text-white mt-2">Dropbox</p></a>
-						<a style="color:purple;" class="fab fa-slack fa-4x text-decoration-none mx-1" href="https://slack.com/intl"><p class="brandname text-white mt-2">Slack</p></a>
-						<a style="color:white;" class="fab fa-docker fa-4x text-decoration-none mx-1" href="https://www.docker.com/"><p class="brandname text-white mt-2">Docker</p></a>
-						<a style="color:skyblue;" class="fab fa-react fa-4x text-decoration-none mx-1" href="https://reactjs.org/docs/getting-started.html"><p class="brandname text-white mt-2">React</p></a>
-						<a style="color:royalblue;" class="fab fa-trello fa-4x text-decoration-none mx-1" href="https://trello.com/"><p class="brandname text-white mt-2">Trello</p></a>
-						<a style="color:aliceblue;" class="fab fa-wordpress-simple fa-4x text-decoration-none mx-1" href="https://wordpress.com/"><p class="brandname text-white mt-2">Wordpress</p></a>
-						<a style="color:green;" class="fas fa-table fa-4x text-decoration-none mx-1" href="https://www.google.com/docs/about/"><p class="brandname text-white mt-2">Google docs</p></a>
-						<a style="color:yellow;" class="fab fa-google-drive fa-4x text-decoration-none mx-1" href="https://www.google.com/drive/"><p class="brandname text-white mt-2">Google Drive</p></a>
-					</div>
-
+					<div class="row justify-content-around bg-transparent py-3 px-5 text-center"> 
+							<a style="color:royalblue;" class="fab fa-stripe-s fa-4x text-decoration-none mx-1" href="https://swexpertacademy.com/main/main.do"><p class="brandname text-white mt-2">SWEA</p></a>
+							<a style="color: #12a8a1;" class="fas fa-ellipsis-h fa-4x text-decoration-none mx-1" href="https://github.com/"><p class="brandname text-white mt-2">백준</p></a>
+							<a style="color:crimson;" class="fas fa-file-pdf fa-4x text-decoration-none mx-1" href="https://smallpdf.com/merge-pdf"><p class="brandname text-white mt-2">PDF합치기</p></a>
+							<a style="color:aquamarine" class="fas fa-infinity fa-4x text-decoration-none mx-1" href="https://www.coursera.org/"><p class="brandname text-white mt-2">코세라</p></a>
+							<a style="color: black;" class="fas fa-user-graduate fa-4x text-decoration-none mx-1" href="https://edu.ssafy.com/"><p class="brandname text-white mt-2">에듀싸피</p></a>
+							<a style="color:black;" class="fab fa-dropbox fa-4x text-decoration-none mx-1" href="https://job.ssafy.com/"><p class="brandname text-white mt-2">잡싸피</p></a>
+							<a style="color:black;" class="fa fa-paint-brush fa-4x text-decoration-none mx-1" href="https://project.ssafy.com/"><p class="brandname text-white mt-2">싸피깃</p></a>
+						</div>
 				</div>
 			</div>
 			<div id="commit-view">
-				<div class="container mt-2 ml-3">
-						<i class="fas fa-code-branch fa-4x"><small>commit checker</small></i>
-						<div class="row my-2">
+					<div class="container">
+							<i class="fas fa-code-branch fa-2x"><small>최근 커밋</small></i>
+							<br>
 							<input class="bg-transparent text-white" v-model="gitUserName" type="text" name="un" id="">
+							<br>
 							<input class="bg-transparent text-white" v-model="repoName" type="text" name="rn" id="">
-
-						</div>
-						<template class="my-auto" v-for="branch in branches">
-								<input type="radio"
-									:id="branch"
-									:value="branch"
-									name="branch"
-									v-model="currentBranch"
-									class="mx-1 my-auto">
-								<label :for="branch">{{ branch }}</label>
-							</template>
-						<div class="row">
-					
-						<div class="dropdown">
-								<button @click="fetchData()" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										{{ gitUserName }}/{{ repoName }}@{{ currentBranch }}
-								</button>
-									<div id="commits" class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
+							<br>
+							<template class="my-auto" v-for="branch in branches">
+									<input type="radio"
+										:id="branch"
+										:value="branch"
+										name="branch"
+										v-model="currentBranch"
+										class="mx-1 my-auto">
+									<label :for="branch">{{ branch }}</label>
+								</template>
+							<div class="row">
+								<div class="dropdown">
+										<button @click="fetchData()" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												{{ gitUserName }}/{{ repoName }}@{{ currentBranch }}
+										</button>
+											<div id="commits" class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
+											</div>
 									</div>
-							</div>
-					</div>
+						</div>
 				</div>
 	<script src="logic.js"></script>
 </body>
