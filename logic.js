@@ -12,7 +12,8 @@ const clock = new Vue({
 	methods: {
 		clicked: function() {
 			this.contentStyle.backgroundColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16)})
-		}
+		},
+
 	},
 	mounted: function() {
 		setInterval(()=>{
@@ -59,13 +60,20 @@ const commitView = new Vue({
 	}
   },
   methods: {
+	commitTrackerVisible() {
+		const ctCont = document.getElementById('commitTrackerToggle')
+		if (ctCont.hidden){
+			ctCont.hidden = false
+		} else {
+			ctCont.hidden = true
+		}
+	},
     fetchData: function () {
 	  const xhr = new XMLHttpRequest()
 	  let apiURL = `https://api.github.com/repos/` + this.gitUserName + '/' + this.repoName + `/commits?per_page=3&sha=`
       xhr.open('GET', apiURL + this.currentBranch)
       xhr.onload = function () {
 		this.commits = JSON.parse(xhr.responseText)
-		console.log(this.commits)
 		const commitdiv = document.getElementById('commits')
 		commitdiv.innerHTML=
 		`<div>
@@ -94,19 +102,3 @@ const commitView = new Vue({
   }
 })
 
-const editor = new Vue({
-	el: '#editor',
-	data: {
-	  input: '# hello'
-	},
-	computed: {
-	  compiledMarkdown: function () {
-		return marked(this.input, { sanitize: true })
-	  }
-	},
-	methods: {
-	  update: _.debounce(function (e) {
-		this.input = e.target.value
-	  }, 300)
-	}
-  })
