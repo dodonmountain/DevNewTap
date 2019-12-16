@@ -3,11 +3,12 @@ body {
     font-family: 'Nanum Gothic Coding', sans-serif;
     font-weight: 200;
     background: transparent;
-    max-height: 100vh;
+    max-height: 95vh;
 
 }
 html {
     background: url("./winter.jpg");
-    box-shadow: inset 0px 0px 400px 200px rgba(0,0,0,0.75);
-    min-height: 100vh;
+    background-size: cover;
+    box-shadow: inset 0px 0px 40vw 5vw rgba(0,0,0,0.55);
+    min-height:  100vh;
 }

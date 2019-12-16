@@ -15,10 +15,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Gothic+Coding&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
-	<script src="https://unpkg.com/marked@0.3.6"></script>
-	<script src="https://unpkg.com/lodash@4.16.0"></script>
-
-
+	
 	<style>
 		.timer {
 			font-size: 5rem;
@@ -44,7 +41,7 @@
 			border-left: 2px solid currentColor;
 			border-right: 2px solid currentColor;
 		}
-		#commit-view {
+		#commitView {
 			position: fixed;
 			top: 0;
 			z-index: 1;
@@ -52,8 +49,8 @@
 		}
 		.row > a {
 			width: 6rem;
-			height: 6rem;;
-			transition: 100ms ease-in-out;
+			height: 6rem;
+			transition: 200ms ease-in-out;
 		}
 		#commit {
 			font-size: 1rem;
@@ -112,18 +109,14 @@
 		code {
 			color: #f66;
 		}
-
-		.main-content > * {
-			background: transparent !important;
-		}
-		.panel {
+		iframe > html {
 			background: transparent;
 		}
 	</style>
 </head>
 
 <body>
-		<div class="bg"></div>
+	
 		<div id="app">
 			<!-- TIMER -->
 				<div id="content">
@@ -145,12 +138,13 @@
 				<!-- carousel container -->
 				<div id="mainCarousel" class="carousel slide" data-ride="carousel" data-interval="false">	
 					<ol class="carousel-indicators">
-							<li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#mainCarousel" data-slide-to="1"></li>
-							<li data-target="#mainCarousel" data-slide-to="2"></li>
-						</ol>
-					<div class="carousel-inner py-5 text-center">
+						<li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#mainCarousel" data-slide-to="1"></li>
+						<li data-target="#mainCarousel" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner py-2 text-center">
 						<div class="carousel-item active">
+
 							<form action="https://www.google.com/search" class="form-control border-0 offset-4 col-4 h-100 bg-transparent" method="get" name="searchform" target="_blank">
 								<input name="sitesearch" type="hidden">
 								<input autocomplete="on" class="input-group form-control search fa" name="q" placeholder="&#xf002; 구글에서 검색" required="required"  type="text">
@@ -164,9 +158,7 @@
 								<input autocomplete="on" class="input-group form-control search fa" name="query" placeholder="&#xf002; 네이버에서 검색" required="required"  type="text">
 							</form>
 						
-							<div class="container text-dark px-5 mt-5">
-
-								<!-- LINKS ROW -->
+							<div class="container text-dark px-5">
 								<div class="row justify-content-around bg-transparent py-3 px-5 text-center"> 
 									<a style="color:salmon;" class="fab fa-codepen fa-4x text-decoration-none mx-1" href="https://codepen.io/"><p class="brandname text-white mt-2">코드펜</p></a>
 									<a style="color: #2f2f2f;" class="fab fa-github fa-4x text-decoration-none mx-1" href="https://github.com/"><p class="brandname text-white mt-2">깃헙</p></a>
@@ -178,31 +170,29 @@
 									<a style="color:royalblue;" class="fab fa-dropbox fa-4x text-decoration-none mx-1" href="https://www.dropbox.com/"><p class="brandname text-white mt-2">드롭박스</p></a>
 									<a style="color:lightseagreen;" class="fa fa-paint-brush fa-4x text-decoration-none mx-1" href="https://www.draw.io/"><p class="brandname text-white mt-2">Draw.io</p></a>
 								</div>
-
 								<div class="row justify-content-around bg-transparent py-3 px-5 text-center"> 
-										<a style="color:royalblue;" class="fab fa-stripe-s fa-4x text-decoration-none mx-1" href="https://swexpertacademy.com/main/main.do"><p class="brandname text-white mt-2">SWEA</p></a>
-										<a style="color: #12a8a1;" class="fas fa-ellipsis-h fa-4x text-decoration-none mx-1" href="https://github.com/"><p class="brandname text-white mt-2">백준</p></a>
-										<a style="color:crimson;" class="fas fa-file-pdf fa-4x text-decoration-none mx-1" href="https://smallpdf.com/merge-pdf"><p class="brandname text-white mt-2">PDF합치기</p></a>
-										<a style="color:aquamarine" class="fas fa-infinity fa-4x text-decoration-none mx-1" href="https://www.coursera.org/"><p class="brandname text-white mt-2">코세라</p></a>
-										
-										<a style="color: white;background: rgba(0,0,0,0.5);" class="fas fa-user-graduate fa-4x text-decoration-none mx-1" href="https://edu.ssafy.com/"><p class="brandname text-white mt-2">에듀싸피</p></a>
-										<a style="color: white;background: rgba(0,0,0,0.5);" class="fab fa-dropbox fa-4x text-decoration-none mx-1" href="https://job.ssafy.com/"><p class="brandname text-white mt-2">잡싸피</p></a>
-										<a style="color: white;background: rgba(0,0,0,0.5);" class="fa fa-paint-brush fa-4x text-decoration-none mx-1" href="https://project.ssafy.com/"><p class="brandname text-white mt-2">싸피깃</p></a>
+									<a style="color:royalblue;" class="fab fa-stripe-s fa-4x text-decoration-none mx-1" href="https://swexpertacademy.com/main/main.do"><p class="brandname text-white mt-2">SWEA</p></a>
+									<a style="color: #12a8a1;" class="fas fa-ellipsis-h fa-4x text-decoration-none mx-1" href="https://github.com/"><p class="brandname text-white mt-2">백준</p></a>
+									<a style="color:crimson;" class="fas fa-file-pdf fa-4x text-decoration-none mx-1" href="https://smallpdf.com/merge-pdf"><p class="brandname text-white mt-2">PDF합치기</p></a>
+									<a style="color:aquamarine" class="fas fa-infinity fa-4x text-decoration-none mx-1" href="https://www.coursera.org/"><p class="brandname text-white mt-2">코세라</p></a>
+									<a style="color: white;background: rgba(0,0,0,0.5);" class="fas fa-user-graduate fa-4x text-decoration-none mx-1" href="https://edu.ssafy.com/"><p class="brandname text-white mt-2">에듀싸피</p></a>
+									<a style="color: white;background: rgba(0,0,0,0.5);" class="fab fa-dropbox fa-4x text-decoration-none mx-1" href="https://job.ssafy.com/"><p class="brandname text-white mt-2">잡싸피</p></a>
+									<a style="color: white;background: rgba(0,0,0,0.5);" class="fa fa-paint-brush fa-4x text-decoration-none mx-1" href="https://project.ssafy.com/"><p class="brandname text-white mt-2">싸피깃</p></a>
 								</div>
-
 							</div>
 						</div>
 						<div class="carousel-item">
-								<iframe allowtransparency="true" style="background: transparent !important;" width="475" height="250" src="https://vclock.com/embed/stopwatch/#enabled=0&msec=6177&laps=2201&theme=0" frameborder="0"></iframe>			
+							<iframe id="yang94lol" allowtransparency="true" width="475" height="250" src="https://vclock.com/embed/stopwatch/#enabled=0&msec=6177&laps=2201&theme=0" frameborder="0"></iframe>
 						</div>
 						<div class="carousel-item">
 							<h1 class="display-1">SLIDE 3</h1>
 						</div>
 					</div>
 				</div>
+			</div>
 
 
-			<div id="commit-view">
+			<div id="commitView">
 					<i @click="commitTrackerVisible" class="fas fa-code-branch fa-2x m-3"></i>
 					<div class="container" id="commitTrackerToggle">
 							<p>최신 커밋</p>
@@ -224,12 +214,13 @@
 										<button @click="fetchData()" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												{{ gitUserName }}/{{ repoName }}@{{ currentBranch }}
 										</button>
-											<div id="commits" class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
-											</div>
-									</div>
+											<div id="commits" class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton"></div>
+								</div>
 						</div>
 				</div>
-	<script src="logic.js"></script>
+				</div>
+				</div>
+		<script src="logic.js"></script>
 </body>
 
 </html>

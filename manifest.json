@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "Getting started example",
-    "description": "This extension shows a Google Image search result for the current page",
+    "description": "This extension replace new tap screen for dev new tap",
     "version": "1.0",
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "content_scripts": [{
