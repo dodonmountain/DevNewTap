@@ -1,5 +1,3 @@
-let yang = document.getElementById('yang94lol')
-
 
 const clock = new Vue({
 	el: '#app',
@@ -16,7 +14,6 @@ const clock = new Vue({
 		},500)
 	}
 })
-
 
 const commitView = new Vue({
 	el: '#commitView',

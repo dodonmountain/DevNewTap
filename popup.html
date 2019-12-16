@@ -36,6 +36,7 @@
 		.brandname {
 			font-size: 1rem;
 			text-overflow: clip;
+			font-weight: 500 !important;
 		}
 		.row > a:hover {
 			border-left: 2px solid currentColor;
@@ -172,7 +173,7 @@
 								</div>
 								<div class="row justify-content-around bg-transparent py-3 px-5 text-center"> 
 									<a style="color:royalblue;" class="fab fa-stripe-s fa-4x text-decoration-none mx-1" href="https://swexpertacademy.com/main/main.do"><p class="brandname text-white mt-2">SWEA</p></a>
-									<a style="color: #12a8a1;" class="fas fa-ellipsis-h fa-4x text-decoration-none mx-1" href="https://github.com/"><p class="brandname text-white mt-2">백준</p></a>
+									<a style="color: #12a8a1;" class="fas fa-ellipsis-h fa-4x text-decoration-none mx-1" href="https://www.acmicpc.net/"><p class="brandname text-white mt-2">백준</p></a>
 									<a style="color:crimson;" class="fas fa-file-pdf fa-4x text-decoration-none mx-1" href="https://smallpdf.com/merge-pdf"><p class="brandname text-white mt-2">PDF합치기</p></a>
 									<a style="color:aquamarine" class="fas fa-infinity fa-4x text-decoration-none mx-1" href="https://www.coursera.org/"><p class="brandname text-white mt-2">코세라</p></a>
 									<a style="color: white;background: rgba(0,0,0,0.5);" class="fas fa-user-graduate fa-4x text-decoration-none mx-1" href="https://edu.ssafy.com/"><p class="brandname text-white mt-2">에듀싸피</p></a>
@@ -182,7 +183,6 @@
 							</div>
 						</div>
 						<div class="carousel-item">
-							<iframe id="yang94lol" allowtransparency="true" width="475" height="250" src="https://vclock.com/embed/stopwatch/#enabled=0&msec=6177&laps=2201&theme=0" frameborder="0"></iframe>
 						</div>
 						<div class="carousel-item">
 							<h1 class="display-1">SLIDE 3</h1>
@@ -206,8 +206,8 @@
 										:value="branch"
 										name="branch"
 										v-model="currentBranch"
-										class="mx-1 my-auto">
-									<label :for="branch">{{ branch }}</label>
+										class="my-auto">
+									<label class="mr-2" :for="branch">{{ branch }}</label>
 								</template>
 							<div class="row pl-3">
 								<div class="dropdown">
