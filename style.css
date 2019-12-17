@@ -8,7 +8,8 @@ body {
 }
 html {
     background: url("./winter.jpg");
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: cover !important;
     box-shadow: inset 0px 0px 40vw 5vw rgba(0,0,0,0.55);
     min-height:  100vh;
 }

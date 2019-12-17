@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
 
-    "name": "Getting started example",
-    "description": "This extension replace new tap screen for dev new tap",
+    "name": "newtab ssafy",
+    "description": "This extension replace new tap for ssafy developers",
     "version": "1.0",
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     "content_scripts": [{

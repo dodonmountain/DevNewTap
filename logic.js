@@ -5,13 +5,28 @@ const clock = new Vue({
 		hours: 0,
 		seconds: 0,
 		date: moment().locale('ko').format('L') + moment().locale('ko').format('dddd')[0],
-		countdown: 10,	
+		countdown: 10,
+		backgrounds: ['winter','bridge','summer'],
 	},
 	mounted: function() {
 		setInterval(()=>{
 			this.hours = [moment().format('LTS').split(':')][0]
 			this.seconds = [moment().format('LTS').split(':')][0][2].split(' ')
 		},500)
+	},
+	methods: {
+		changeBg(direction) {
+			const background = document.querySelector('html')
+			if (direction == 1){
+				let temp = this.backgrounds.shift()
+				this.backgrounds.push(temp)
+				background.style.background = `url("./${this.backgrounds[0]}.jpg")`
+			} else {
+				let temp = this.backgrounds.pop()
+				this.backgrounds.unshift(temp)
+				background.style.background = `url("./${this.backgrounds[0]}.jpg")`
+			}
+		},
 	}
 })
 
