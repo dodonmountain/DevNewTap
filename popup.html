@@ -37,6 +37,11 @@
 			font-size: 1rem;
 			text-overflow: clip;
 			font-weight: 500 !important;
+			background: rgba(0, 0, 0, 0.5);
+			width: fit-content;
+			padding: 3px;
+			border-radius: 5px 5px;
+			margin: 0 auto;
 		}
 		.row > a:hover {
 			border-left: 2px solid currentColor;
@@ -63,9 +68,12 @@
 			padding-left: 5px;
 			border-radius: 5px 5px;	
 			background: rgba(0,0,0,0.1);
+			transition: 1s;
 		}
 		input[type=text]:focus {
-			background: transparent;
+			background: rgba(255,255,255,0.4)
+			color: black;
+			width: 45vw;
 		}
 		.search {
 			background: transparent;
@@ -144,7 +152,7 @@
 						<li data-target="#mainCarousel" data-slide-to="2"></li>
 					</ol>
 					<div class="carousel-inner py-2 text-center">
-						<div class="carousel-item active">
+						<div class="carousel-item active justify-content-center">
 
 							<form action="https://www.google.com/search" class="form-control border-0 offset-4 col-4 h-100 bg-transparent" method="get" name="searchform" target="_blank">
 								<input name="sitesearch" type="hidden">
@@ -176,9 +184,9 @@
 									<a style="color: #12a8a1;" class="fas fa-ellipsis-h fa-4x text-decoration-none mx-1" href="https://www.acmicpc.net/"><p class="brandname text-white mt-2">백준</p></a>
 									<a style="color:crimson;" class="fas fa-file-pdf fa-4x text-decoration-none mx-1" href="https://smallpdf.com/merge-pdf"><p class="brandname text-white mt-2">PDF합치기</p></a>
 									<a style="color:aquamarine" class="fas fa-infinity fa-4x text-decoration-none mx-1" href="https://www.coursera.org/"><p class="brandname text-white mt-2">코세라</p></a>
-									<a style="color: white;background: rgba(0,0,0,0.5);" class="fas fa-user-graduate fa-4x text-decoration-none mx-1" href="https://edu.ssafy.com/"><p class="brandname text-white mt-2">에듀싸피</p></a>
-									<a style="color: white;background: rgba(0,0,0,0.5);" class="fab fa-dropbox fa-4x text-decoration-none mx-1" href="https://job.ssafy.com/"><p class="brandname text-white mt-2">잡싸피</p></a>
-									<a style="color: white;background: rgba(0,0,0,0.5);" class="fa fa-paint-brush fa-4x text-decoration-none mx-1" href="https://project.ssafy.com/"><p class="brandname text-white mt-2">싸피깃</p></a>
+									<a style="color: white;" class="fas fa-user-graduate fa-4x text-decoration-none mx-1" href="https://edu.ssafy.com/"><p class="brandname text-white mt-2">에듀싸피</p></a>
+									<a style="color: white;" class="fab fa-dropbox fa-4x text-decoration-none mx-1" href="https://job.ssafy.com/"><p class="brandname text-white mt-2">잡싸피</p></a>
+									<a style="color: white;" class="fa fa-paint-brush fa-4x text-decoration-none mx-1" href="https://project.ssafy.com/"><p class="brandname text-white mt-2">싸피깃</p></a>
 								</div>
 							</div>
 						</div>
