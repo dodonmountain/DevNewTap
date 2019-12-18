@@ -109,7 +109,7 @@ const commitView = new Vue({
 				  for (let i=0;i < totalItemCount;i++){
 					console.log(xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent)
 					console.log(xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent)
-					rssDiv.innerHTML += `<a href="` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent + `"><h3>` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent + `</h3></a>`
+					rssDiv.innerHTML += `<a href="` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent + ` target="_blank"><h3>` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent + `</h3></a>`
 				  }
 
 			  }
