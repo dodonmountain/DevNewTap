@@ -15,138 +15,6 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Gothic+Coding&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
-	
-	<style>
-		.timer {
-			font-size: 5rem;
-			font-family: 'Nanum Gothic Coding', monospace;
-			text-shadow: 1px 1px #2f2f2f;
-		}
-		.date {
-			font-size: 1.2rem;
-			margin: 0;
-		}
-		.time {
-			font-size: 7rem;
-			font-family: 'Didact Gothic';
-		}
-		.brand {
-			align-content: center;
-			margin-right: -5rem;
-		}
-		.brandname {
-			font-size: 1rem;
-			text-overflow: clip;
-			font-weight: 500 !important;
-			background: rgba(0, 0, 0, 0.5);
-			width: fit-content;
-			padding: 3px;
-			border-radius: 5px 5px;
-			margin: 0 auto;
-		}
-		.row > a:hover {
-			border-left: 2px solid currentColor;
-			border-right: 2px solid currentColor;
-		}
-		#commitView {
-			position: fixed;
-			top: 0;
-			z-index: 1;
-			left: 0;
-		}
-		#commitView > i {
-			cursor: pointer;
-		}
-		.row > a {
-			width: 6rem;
-			height: 6rem;
-			transition: 200ms ease-in-out;
-		}
-		#commit {
-			font-size: 1rem;
-			opacity: 0.8;
-		}
-		input[type=text] {
-			border: 1px solid white;
-			margin-right: 1rem;
-			padding-left: 5px;
-			border-radius: 5px 5px;	
-			background: rgba(0,0,0,0.3);
-			transition: 1s;
-		}
-		input[type=text]:focus {
-			background: rgba(255,255,255,0.4);
-			color: black;
-			width: 120%;
-			margin-left: -10%;
-		}
-		.search {
-			background: transparent;
-			color: white;
-		}
-		::placeholder {
-			color: white !important;
-		}
-		.carousel-indicators {
-			position: fixed;
-			bottom: 0;
-		}
-		.carousel-indicators > li {
-			height: 20px;
-			width: 20px;
-			border-radius: 50%;
-			margin: 0 15px;
-		}
-		#app {
-			margin-top: 20vh;
-		}
-		textarea, #editor div {
-			display: inline-block;
-			width: 49%;
-			height: 100%;
-			vertical-align: top;
-			box-sizing: border-box;
-			padding: 0 20px;
-		}
-
-		textarea {
-			border: none;
-			border-right: 1px solid #ccc;
-			resize: none;
-			outline: none;
-			background-color: #f6f6f6;
-			font-size: 14px;
-			font-family: 'Monaco', courier, monospace;
-			padding: 20px;
-		}
-
-		code {
-			color: #f66;
-		}
-		iframe > html {
-			background: transparent;
-		}
-		
-		#bgChanger {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-		}
-		#bgChanger > div > i {
-			color:rgba(255, 255, 255, 0.8)
-		}
-		#bgChanger > div > i:hover {
-			color:rgba(255, 255, 255, 1);
-			cursor: pointer;
-		}
-		.sign {
-			position: fixed;
-			bottom: 0;
-			right: 0;
-			background: rgba(0, 0, 0, 0.5);
-			padding: 1px;
-		}
-	</style>
 </head>
 
 <body>
@@ -168,11 +36,11 @@
 						</div>
 					</div>
 				</div>
-
+				<!-- Background Image Changer -->
 				<div id="bgChanger">
 					<div class="row">
-						<i @click="changeBg(-1)" class="fas fa-caret-left fa-4x mx-4"></i>
-						<i @click="changeBg(1)" class="fas fa-caret-right fa-4x mx-4"></i>
+						<i @click="changeBg(-1)" class="fas fa-caret-left fa-2x ml-4 my-2"></i>
+						<i @click="changeBg(1)" class="fas fa-caret-right fa-2x ml-3 my-2"></i>
 					</div>
 				</div>
 			</div>
@@ -225,10 +93,12 @@
 							</div>
 						</div>
 						<div class="carousel-item">
-							<iframe src="https://trinket.io/embed/python3/665714edd3" width="80%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+							<!-- <iframe src="https://trinket.io/embed/python3/665714edd3" width="80%" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe> -->
 						</div>
 						<div class="carousel-item">
-							<h1 class="display-1">SLIDE 3</h1>
+							<h1 class="text-center text-dark shadow w-75 mx-auto">IT NEWS</h1>
+							<div id="rss">
+							</div>
 						</div>
 					</div>
 				</div>

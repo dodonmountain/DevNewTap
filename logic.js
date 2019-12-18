@@ -46,6 +46,7 @@ const commitView = new Vue({
 		if (localStorage.repoName) {
 			this.repoName = localStorage.repoName;
 		}
+		this.rssData()
 	},
 	watch: {
 		gitUserName(newName) {
@@ -94,7 +95,28 @@ const commitView = new Vue({
 				</div>`
 			}
 			xhr.send()
-		}
-	}
+		},
+		rssData: function () {
+			let feed = "http://www.zdnet.co.kr/Include2/NewsSection0020.xml?format=xml";
+			let xhr = new XMLHttpRequest;
+			xhr.open('GET', feed);
+			xhr.responseType = 'document';
+			xhr.overrideMimeType('text/xml');
+			xhr.onload = function () {
+			  if (xhr.readyState === xhr.DONE && xhr.status === 200) {
+				  const totalItemCount = xhr.responseXML.getElementsByTagName('item').length
+				  const rssDiv = document.getElementById('rss')
+				  for (let i=0;i < totalItemCount;i++){
+					console.log(xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent)
+					console.log(xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent)
+					rssDiv.innerHTML += `<a href="` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent + `"><h3>` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent + `</h3></a>`
+				  }
+
+			  }
+			};
+			
+			xhr.send();
+			}
+		},
 })
 
