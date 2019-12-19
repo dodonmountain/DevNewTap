@@ -114,8 +114,6 @@ const commitView = new Vue({
 				  const totalItemCount = xhr.responseXML.getElementsByTagName('item').length
 				  const rssDiv = document.getElementById('rss')
 				  for (let i=0;i < totalItemCount;i++){
-					console.log(xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent)
-					console.log(xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent)
 					rssDiv.innerHTML += `<a href="` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent + ` target="_blank"><h3 class="shadow bg-white">` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent + `</h3></a>`
 				  }
 			  }
