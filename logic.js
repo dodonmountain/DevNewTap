@@ -6,7 +6,7 @@ const clock = new Vue({
 		seconds: 0,
 		date: moment().locale('ko').format('L') + moment().locale('ko').format('dddd')[0],
 		countdown: 10,
-		backgrounds: ['winter','bridge','summer'],
+		backgrounds: ['bridge','summer','purple', 'cave', 'winter'],
 	},
 	mounted: function() {
 		setInterval(()=>{
@@ -109,9 +109,8 @@ const commitView = new Vue({
 				  for (let i=0;i < totalItemCount;i++){
 					console.log(xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent)
 					console.log(xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent)
-					rssDiv.innerHTML += `<a href="` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent + ` target="_blank"><h3>` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent + `</h3></a>`
+					rssDiv.innerHTML += `<a href="` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('link')[0].textContent + ` target="_blank"><h3 class="shadow bg-white">` + xhr.responseXML.getElementsByTagName('item')[i].getElementsByTagName('title')[0].textContent + `</h3></a>`
 				  }
-
 			  }
 			};
 			

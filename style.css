@@ -7,7 +7,7 @@ body {
 
 }
 html {
-    background: url("./winter.jpg");
+    background: url("./bridge.jpg");
     background-repeat: no-repeat;
     background-size: cover !important;
     box-shadow: inset 0px 0px 40vw 5vw rgba(0,0,0,0.55);
@@ -74,11 +74,14 @@ input[type=text]:focus {
     background: rgba(255,255,255,0.4);
     color: black;
     width: 120%;
+}
+.search:focus {
     margin-left: -10%;
 }
 .search {
     background: transparent;
     color: white;
+    transition: 1s ease-in-out;
 }
 ::placeholder {
     color: white !important;
@@ -94,7 +97,7 @@ input[type=text]:focus {
     margin: 0 15px;
 }
 #app {
-    margin-top: 20vh;
+    margin-top: 15vh;
 }
 textarea, #editor div {
     display: inline-block;
@@ -145,18 +148,20 @@ iframe {
 }
 #rss {
     max-height: 41vh;
-    font-family: 'Nanum Gothic Coding', monospace;
     overflow: scroll;
     overflow-x: hidden;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    background: transparent;
+    width: fit-content;
+    margin: 0 auto;
 }
 #rss::-webkit-scrollbar {
     width: 1em;
   }
    
 #rss::-webkit-scrollbar-track {
-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 #rss::-webkit-scrollbar-thumb {
@@ -169,8 +174,19 @@ outline: 1px solid slategrey;
     color: white;
 }
 #rss > a > h3 {
-    background-color: rgba(0,0,0,0.55);
-    width: 38vw;
+    color: #2f2f2f;
+    font-family: 'Jua', sans-serif;
+    width: 45vw;
     margin: 2rem auto;
     padding: 0.5rem;
+}
+
+.news {
+    font-size: 3rem;
+    font-weight: 900;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    color: #1f1f1f;
+    text-shadow: 3px 3px white;
 }
