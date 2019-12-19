@@ -15,8 +15,6 @@
         "newtab": "popup.html"
     },
     "permissions": [
-        "tabs",
-        "http://*/*",
-        "https://*/*"
+        "tabs"
     ]
 }

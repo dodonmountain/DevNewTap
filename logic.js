@@ -13,6 +13,11 @@ const clock = new Vue({
 			this.hours = [moment().format('LTS').split(':')][0]
 			this.seconds = [moment().format('LTS').split(':')][0][2].split(' ')
 		},500)
+		try {
+			document.querySelector('html').style.background = `url("./${localStorage.bg}.jpg")`
+		} catch (error) {
+			console.log(error)
+		}
 	},
 	methods: {
 		changeBg(direction) {
@@ -20,10 +25,12 @@ const clock = new Vue({
 			if (direction == 1){
 				let temp = this.backgrounds.shift()
 				this.backgrounds.push(temp)
+				localStorage.bg = temp;
 				background.style.background = `url("./${this.backgrounds[0]}.jpg")`
 			} else {
 				let temp = this.backgrounds.pop()
 				this.backgrounds.unshift(temp)
+				localStorage.bg = temp;
 				background.style.background = `url("./${this.backgrounds[0]}.jpg")`
 			}
 		},
